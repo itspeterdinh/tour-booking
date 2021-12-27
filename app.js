@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const csp = require('express-csp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -153,6 +154,8 @@ app.use(
     whitelist: ['duration', 'ratingsAverage', 'ratingsAverage', 'price']
   })
 );
+
+app.use(compression());
 
 // app.use((req, res, next) => {
 //   console.log('Hello from the middleware');
